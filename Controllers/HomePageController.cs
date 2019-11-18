@@ -5,29 +5,25 @@ namespace SampleApp.Controllers
 {
     public class HomePageController : Controller
     {
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-
         // 
-        // GET: /HelloWorld/
-
-        public string Index()
+        // GET: /Movie/
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View();
         }
 
-        // GET: /HelloWorld/Welcome/ 
+        // GET: /Movie/Welcome/ 
         // Requires using System.Text.Encodings.Web;
-        public string Welcome(string name, int ID = 1)
+        public IActionResult Welcome(string name, int ID = 1)
         {
-            return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
+            ViewData["Message"] = "Hello " + name;
+            ViewData["ID"] = ID;
+
+            return View();
         }
 
-        // https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-view?view=aspnetcore-3.0&tabs=visual-studio
+        //
+        // https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-3.0&tabs=visual-studio
         //^^^^^ Next step
     }
 }
